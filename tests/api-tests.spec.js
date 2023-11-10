@@ -9,11 +9,9 @@ test('Confirm the site is up test', async({request}) =>{
 
 test('Get a new deck_id test', async({request}) =>{
     const response = await request.get('https://deckofcardsapi.com/api/deck/new/')
-    // Assuming the response is in JSON format, parse it
     const jsonResponse = await response.json();
-    // Access the deck_id from the parsed JSON
+    //deck_id from the parsed JSON
     const deck_id = jsonResponse.deck_id;
-    // Now you can use the deckId in your test or perform assertions
     expect(deck_id).not.toBeNull();
 
     const responseShuffle = await request.get(`https://deckofcardsapi.com/api/deck/${deck_id}/shuffle/`)
